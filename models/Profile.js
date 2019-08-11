@@ -5,12 +5,23 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
-  nickname: {
+  title: {
     type: String,
     required: true
   },
+  color: {
+    type: String,
+    required: true
+  },
+
   bio: {
     type: String
+  },
+  birthday: {
+    type: String
+  },
+  extension: {
+    type: Number
   }
 });
 

@@ -18,6 +18,7 @@ app.use('/api/it', require('./routes/api/it'));
 app.use('/api/maintenance', require('./routes/api/maintenance'));
 app.use('/api/news', require('./routes/api/news'));
 app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/project', require('./routes/api/project'));
 app.use('/api/stock', require('./routes/api/stock'));
 app.use('/api/supplies', require('./routes/api/supplies'));
 
