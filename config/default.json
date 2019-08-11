@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://admin-one:uG1vEah7kMuU6uQA@polyboard-xsoh6.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://admin-one:uG1vEah7kMuU6uQA@polyboard-xsoh6.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secretTokenSecret"
 }
