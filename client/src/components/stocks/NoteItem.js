@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 const NoteItem = props => {
   return (
@@ -8,7 +7,5 @@ const NoteItem = props => {
     </Fragment>
   );
 };
-
-NoteItem.propTypes = {};
 
 export default NoteItem;

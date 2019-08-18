@@ -25,7 +25,7 @@ const NoteForm = ({ stockId, addNote }) => {
         <form
           onSubmit={e => {
             e.preventDefault();
-            addNote(stockId, { formData });
+            addNote(stockId, formData);
           }}
           className='form'
         >
@@ -44,7 +44,6 @@ const NoteForm = ({ stockId, addNote }) => {
               name='inStockDate'
               value={inStockDate}
               onChange={e => onChange(e)}
-              required
             />
           </div>
 

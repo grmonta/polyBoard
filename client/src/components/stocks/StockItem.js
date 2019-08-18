@@ -6,12 +6,15 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import NoteItem from './NoteItem';
 import NoteStockDate from './NoteStockDate';
-import { deleteStock } from '../../actions/stock';
+
+import { deleteStock, deleteNote } from '../../actions/stock';
 
 const StockItem = ({
   deleteStock,
+
   auth,
-  stock: { _id, itemNumber, createdDate, name, user, notes }
+  stock: { _id, itemNumber, createdDate, name, user, notes },
+  deleteNote
 }) => {
   return (
     <Fragment>
@@ -22,23 +25,17 @@ const StockItem = ({
             <Link to={`/profile/${user}`}> {name}</Link>
           </td>
           <td className='hide-sm'>
-            <Moment format='MMM Do YY'>{createdDate}</Moment>
+            <Moment format='MMM Do'>{createdDate}</Moment>
           </td>
+
           <td className='hide-sm'>
-            {/* {notes.length} */}
             {notes.map(note => (
               <NoteItem key={note._id} issue={note.issue} />
             ))}
           </td>
           <td>
-            {/* <Moment format='YYYY/MM/DD'>{inStockDate} </Moment> */}
             {notes.map(note => (
-              <NoteStockDate
-                key={note._id}
-                inStockDate={
-                  <Moment format='MMM Do YY'>{note.inStockDate} </Moment>
-                }
-              />
+              <NoteStockDate key={note._id} inStockDate={note.inStockDate} />
             ))}
           </td>
           <td>
@@ -49,10 +46,11 @@ const StockItem = ({
           <td className='hide-sm'>
             {!auth.loading && user === auth.user._id && (
               <button
+                onClick={() => deleteStock(_id)}
+                type='button'
                 className='btn btn-danger'
-                onClick={e => deleteStock(_id)}
               >
-                Delete
+                <i className='fas fa-times' />
               </button>
             )}
           </td>
@@ -65,7 +63,8 @@ const StockItem = ({
 StockItem.propTypes = {
   stock: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  deleteStock: PropTypes.func.isRequired
+  deleteStock: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -73,5 +72,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { deleteStock }
+  { deleteStock, deleteNote }
 )(StockItem);

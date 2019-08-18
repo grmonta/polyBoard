@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Spinner from '../layouts/Spinner';
 import StockItem from '../stocks/StockItem';
-import NoteItem from '../stocks/NoteItem';
+
 import NoteForm from '../stock/NoteForm';
 import { getStock } from '../../actions/stock';
 
@@ -33,6 +33,7 @@ const Stock = ({ getStock, stock: { stock, loading }, match }) => {
           </tr>
         </thead>
         <StockItem stock={stock} />
+
         <NoteForm stockId={stock._id} />
       </table>
       {/* <div className='comments'>

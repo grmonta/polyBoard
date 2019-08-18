@@ -122,7 +122,8 @@ export const deleteNote = ({ stockId, noteId }) => async dispatch => {
     await axios.delete(`/api/stock/notes/${stockId}/${noteId}`);
     dispatch({
       type: REMOVE_NOTE,
-      payload: noteId
+      payload: noteId,
+      noteId
     });
 
     dispatch(setAlert('Note removed', 'success'));
