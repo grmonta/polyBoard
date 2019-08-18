@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-
+const path = require('path');
 const app = express();
 
 //connect Database
@@ -8,8 +8,6 @@ connectDB();
 
 //Init middleware
 app.use(express.json({ extended: false }));
-
-app.get('/', (req, res) => res.send('API Running'));
 
 //define Routes
 app.use('/api/users', require('./routes/api/users'));
@@ -21,6 +19,15 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/project', require('./routes/api/project'));
 app.use('/api/stock', require('./routes/api/stock'));
 app.use('/api/supplies', require('./routes/api/supplies'));
+
+//serve satis assests in production
+if (process.env.NODE_ENV === 'production') {
+  //set static folder
+  app.use(express.statis('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
