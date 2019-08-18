@@ -37,7 +37,7 @@ router.post(
       //create a new object
 
       const newStockItem = new StockItem({
-        itemNumber: req.body.itemNumber,
+        itemNumber: req.body.itemNumber.toUpperCase(),
 
         createdDate: req.body.createdDate,
 
@@ -91,7 +91,7 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
-//@route    Delete api/stock
+//@route    Delete api/stock/:id
 //@desc     Delete a posts
 //@access   Private
 

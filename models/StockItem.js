@@ -28,7 +28,7 @@ const StockItemSchema = new Schema({
         type: String
       },
       inStockDate: {
-        type: String
+        type: Date
       },
       issue: {
         type: String
